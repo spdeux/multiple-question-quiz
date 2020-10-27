@@ -1,0 +1,5 @@
+<mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" required>
+    <mat-radio-button class="space-options" *ngFor="let option of currentOptions" (click)="onClick(option)" [value]="option.id">
+        {{option.text}}
+    </mat-radio-button>
+</mat-radio-group>

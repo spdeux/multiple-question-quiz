@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push" class="sideNaveWidth">
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="'/quizStepper'" *ngIf="isAuth">
+                <mat-icon>low_priority</mat-icon>
+                StepperQuiz
+            </a>
+            <a mat-list-item [routerLink]="'/quiz'" *ngIf="isAuth">
+                <mat-icon>flip_to_front</mat-icon>
+                CardQuiz
+            </a>
+            <a mat-list-item (click)="onLogout()" mat-list-item *ngIf="isAuth">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+            </a>
+            <a mat-list-item (click)="sideNaveToggle()" mat-list-item>
+                <mat-icon>reply</mat-icon>
+                Close
+            </a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style=" height:100vh; ">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

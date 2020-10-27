@@ -1,0 +1,30 @@
+<div id="bg">
+    <div class="module">
+
+        <form class="form space" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="card-content">
+            </div>
+            <input type="email" matInput placeholder="Email" formControlName="userName" [(ngModel)]="logininformation.userName" name="userName" class="spaceBetweenControllers textbox" />
+
+            <mat-error *ngIf="ctrl.userName.errors && ctrl.userName?.errors?.pattern">email is invalid</mat-error>
+
+            <input type="password" matInput placeholder="Password" formControlName="password" [(ngModel)]="logininformation.password" name="password" class="textbox spaceBetweenControllers" />
+
+            <mat-error *ngIf="ctrl.password.errors && (ctrl.password?.dirty || ctrl.password.touched)  && ctrl.password.errors.minlength">should be at least 6 characters long.</mat-error>
+
+            <div class="row ">
+                <div class="col s12 m9 l10">
+                    <input matInput placeholder="your birthdate" [matDatepicker]="dp" formControlName="birthdate" [(ngModel)]="logininformation.birthDate" name="birthdate">
+                </div>
+                <div class="col s12 m3 l2">
+                    <mat-datepicker-toggle class="spaceBetweenControllers" matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp class="spaceBetweenControllers"></mat-datepicker>
+                </div>
+                <mat-checkbox formControlName="rememberMe" [(ngModel)]="logininformation.rememberMe" name="rememberMe" ngModel>Agree to terms and conditions</mat-checkbox>
+            </div>
+
+            <button [class.spinner]="isLoading" [disabled]="form.invalid || isLoading" type="submit" mat-raised-button color="primary" class="button spaceBetweenControllers">SIGN UP</button>
+
+        </form>
+    </div>
+</div>

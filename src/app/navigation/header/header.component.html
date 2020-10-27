@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button>
+      <mat-icon (click)="sideNaveToggle()">menu</mat-icon>
+    </button>
+        <button mat-raised-button color="primary" mat-button [routerLink]="''">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+            Home
+        </button>
+        <div>
+            <a mat-button [routerLink]="'/welcome'" *ngIf="isAuth"> Quiz </a>
+        </div>
+        <span class="menu-spacer"></span>
+        <div>
+            <a mat-button [routerLink]="'/contact'"> Contact </a>
+        </div>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs="true">
+            <ul fxLayout fxLayoutGap="10px" class="navigation-items header-font">
+                <li *ngIf="!isAuth">
+                    <a [routerLink]="'/Auth/signup'">
+                        <mat-icon aria-hidden="false" aria-label="Example how_to_reg icon">add_circle_outline</mat-icon>
+                        Signup
+                    </a>
+                </li>
+                <li *ngIf="!isAuth">
+                    <a [routerLink]="'/Auth/login'">
+                        <mat-icon aria-hidden="false" aria-label="Example how_to_reg icon">how_to_reg</mat-icon>
+                        Login
+                    </a>
+                </li>
+                <li *ngIf="isAuth">
+                    <a class="logout" (click)="onLogout()">
+                        <mat-icon aria-hidden="false" aria-label="Example how_to_reg icon">remove_circle_outline</mat-icon>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

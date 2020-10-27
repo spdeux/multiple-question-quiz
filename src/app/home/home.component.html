@@ -1,0 +1,17 @@
+<!-- TO DO... -->
+<!-- LINKS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<!-- BODY -->
+<div id="wrapper">
+    <div class="header" style="background: url(../../../../assets/img/main.jpg);background-repeat: no-repeat;">
+    </div>
+    <div class="info">
+        <p>
+            <i class="fa fa-bandcamp" aria-hidden="true"></i>
+            <span class="bold">Test your knowledge</span>
+    </div>
+    <div class="button">
+        <a *ngIf="isAuth" class="start" [routerLink]="'/welcome'">Start</a>
+        <a *ngIf="!isAuth" class="start" [routerLink]="'Auth/login'">Login</a>
+    </div>

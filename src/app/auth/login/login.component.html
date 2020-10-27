@@ -1,0 +1,16 @@
+<div id="bg">
+    <div class="module">
+
+        <form class="form" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="card-content">
+            </div>
+            <input type="email" matInput placeholder="Email" name="email" ngModel #emailInput="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="textbox" />
+            <mat-error *ngIf="emailInput.hasError('required')&& (emailInput.dirty || emailInput.touched)">field must not be empty</mat-error>
+            <mat-error *ngIf="emailInput.errors && emailInput.errors.pattern">email is invalid</mat-error>
+            <input type="password" matInput placeholder="Password" name="password" ngModel #pwInput="ngModel" minlength="6" required class="textbox" />
+
+            <mat-error *ngIf="pwInput.errors && pwInput.errors.minlength">should be at least 6 characters long.</mat-error>
+            <button [class.spinner]="isLoading" [disabled]="f.invalid || isLoading" type="submit" mat-raised-button color="primary" class="button">LOGIN</button>
+        </form>
+    </div>
+</div>

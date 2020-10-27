@@ -1,0 +1,10 @@
+.percentage {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.message {
+    text-align: center;
+}

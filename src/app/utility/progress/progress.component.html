@@ -1,0 +1,20 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Summary</mat-card-title>
+
+    </mat-card-header>
+    <!-- TO DO... -->
+    <img mat-card-image src="https://assets.justinmind.com/blog/wp-content/uploads/2018/09/man-pushing-a-progress-bar-768x245.png" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p class="message">
+            {{message}}
+        </p>
+
+        <span class="percentage">{{percentage}}% Completed</span>
+        <mat-progress-bar mode="determinate" [value]="percentage" #progressbar></mat-progress-bar>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+</mat-card>

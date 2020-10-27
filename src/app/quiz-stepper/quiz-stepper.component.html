@@ -1,0 +1,47 @@
+<div class="slack" *ngIf="!pageLoaded">
+    <span class="slack-dot slack-dot--a">
+    
+        </span><span class="slack-dot slack-dot--b">
+    
+        </span><span class="slack-dot slack-dot--c">
+    
+        </span><span class="slack-dot slack-dot--d"></span>
+</div>
+
+<div class="row" *ngIf="pageLoaded">
+    <div class="col s12 m12 l9">
+        <mat-vertical-stepper [linear]="isLinear" #stepper>
+
+            <mat-step *ngFor="let question of questions;let i=index">
+                <form>
+                    <ng-template matStepLabel>Question{{i+1}}</ng-template>
+                    <p> {{question.text}}</p>
+                    <app-option [questionId]="question.id" (optionValueChanged)="selectOption($event)"></app-option>
+
+                    <div>
+                        <button   mat-flat-button matStepperPrevious  color="primary" *ngIf="i+1!=questions.length && i!=0" (click)="prevStep(i-1)">
+                            <mat-icon>navigate_before</mat-icon>
+                            Back
+                        </button>
+                        <button  mat-flat-button color="primary" mat-button matStepperNext *ngIf="i+1!=questions.length" (click)="nextStep(i+1)">
+                                Next
+                                <mat-icon>navigate_next</mat-icon>
+                        </button>
+
+                        <button  mat-flat-button matStepperNext [color]="'success'" *ngIf="i+1==questions.length" (click)="showResult(i+1)" [class.spinner]="fetchedResult" [disabled]="fetchedResult">
+                                Result
+                                <mat-icon>done_all</mat-icon>
+                        </button>
+                    </div>
+                </form>
+            </mat-step>
+
+
+        </mat-vertical-stepper>
+    </div>
+
+    <div class="col s12 m12 l3" >
+        <app-progress></app-progress>
+
+    </div>
+</div>
